@@ -1,11 +1,11 @@
 ﻿
-
-using Microsoft.Extensions.Options;
-
 namespace SurveyBasket.Presistance;
 
 public class ApplicationDbContext (DbContextOptions<ApplicationDbContext>  options):DbContext (options)
 {
-
-
+    protected override void OnModelCreating(ModelBuilder modelBuilder)
+    {
+        modelBuilder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
+    }
+    public DbSet<Poll> Polls { get; set; }
 }
