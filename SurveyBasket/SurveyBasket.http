@@ -8,3 +8,7 @@ Accept: application/json
 GET {{SurveyBasket_HostAddress}}/weatherforecast
 
 ###
+
+GET {{SurveyBasket_HostAddress}}/api/polls
+
+###

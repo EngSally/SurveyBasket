@@ -1,7 +1,4 @@
-﻿using Mapster;
-using MapsterMapper;
-using SurveyBasket.Presistance;
-using SurveyBasket.Services;
+﻿
 
 namespace SurveyBasket;
 
@@ -17,9 +14,9 @@ public   static class DependancyInjection
         services.AddDbContext<ApplicationDbContext>(options => options.UseSqlServer(connectionString));
         services.AddControllers();
         services.AddSwaggerService();
-        services.AddScoped<IPollService, PollService>();
         services.AddMapsterConf();
-
+        services.AddFluentValidationConf();
+        services.AddScoped<IPollService, PollService>();
         return services;
     }
 
@@ -39,7 +36,14 @@ public   static class DependancyInjection
 
         return services;
     }
+    public static IServiceCollection AddFluentValidationConf(this IServiceCollection services)
+    {
+        services
+            .AddFluentValidationAutoValidation()
+            .AddValidatorsFromAssembly(Assembly.GetExecutingAssembly());
 
+        return services;
+    }
 
 
 }
