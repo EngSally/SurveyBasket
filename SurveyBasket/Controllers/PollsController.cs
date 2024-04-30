@@ -2,7 +2,7 @@
 using Mapster;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using SurveyBasket.Contracts.Requests;
+using SurveyBasket.Contracts.Polls;
 using SurveyBasket.Services;
 using System.Threading;
 
@@ -53,4 +53,11 @@ public class PollsController(IPollService pollService) : ControllerBase
         return !result ? NotFound() : NoContent();
     }
 
+    [HttpPut("{id}/TogglePublish")]
+    public async Task<IActionResult> TogglePublish([FromRoute] int id, CancellationToken cancellationToken)
+    {
+
+        bool result= await _pollService.TogglePublishAsync(id,cancellationToken);
+        return !result ? NotFound() : NoContent();
+    }
 }

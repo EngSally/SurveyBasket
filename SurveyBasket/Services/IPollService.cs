@@ -9,6 +9,7 @@ public interface IPollService
     Task<Poll> AddAsync(Poll poll, CancellationToken cancellationToken);
     
     Task<bool> UpdateAsync(Poll poll, CancellationToken cancellationToken);
+    Task<bool> TogglePublishAsync(int id, CancellationToken cancellationToken);
     Task<bool> DeleteAsync(int id, CancellationToken cancellationToken);
 
 

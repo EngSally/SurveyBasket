@@ -14,4 +14,4 @@ global using SurveyBasket;
 global using SurveyBasket.Presistance;
 global using SurveyBasket.Services;
 global using SurveyBasket.Entities;
-global using SurveyBasket.Contracts.Responses;
+global using SurveyBasket.Contracts.Polls;
